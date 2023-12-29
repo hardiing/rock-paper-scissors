@@ -1,5 +1,7 @@
-let playerSelection = getPlayerChoice()
-let computerSelection = getComputerChoice()
+let playerSelection
+let computerSelection
+let playerWin = false
+let computerWin = false
 
 function capitalize(string) {
     string = string.split("")
@@ -26,29 +28,62 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
+    getPlayerChoice()
+    getComputerChoice()
     let playerOption = playerSelection.toLowerCase()
     let computerOption = computerSelection.toLowerCase()
     
     if(playerOption === "rock" && computerOption === "scissors") {
-        return console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        return playerWin = true
     } else if(playerOption === "rock" && computerOption === "paper") {
-        return console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
+        console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
+        return computerWin = true
     } else if(playerOption === "paper" && computerOption === "rock") {
-        return console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        return playerWin = true
     } else if(playerOption === "paper" && computerOption === "scissors") {
-        return console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
+        console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
+        return computerWin = true
     } else if(playerOption === "scissors" && computerOption === "paper") {
-        return console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        return playerWin = true
     } else if(playerOption === "scissors" && computerOption === "rock") {
-        return console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
+        console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
+        return computerWin = true
     } else {
         console.log("Tie! Play again!")
-        let playerSelection = getPlayerChoice()
-        let computerSelection = getComputerChoice()
-        return playRound(playerSelection, computerSelection)
+        return playerWin = false
+        // let playerSelection = getPlayerChoice()
+        // let computerSelection = getComputerChoice()
+        // playRound(playerSelection, computerSelection)
     }
 
 }
 
-playRound(playerSelection, computerSelection)
+function game() {
+    let playerScore = 0
+    let computerScore = 0
+
+    while(playerScore < 5 || computerScore < 5) {
+        playRound()
+        if(playerWin === true) {
+            playerScore++
+            playerWin = false
+        } else if(computerWin === true) {
+            computerScore++
+            computerWin = false
+        }
+    }
+
+    if(playerScore === 5) {
+        return console.log("You Win! " + playerScore + " to " + computerScore)
+    } else if(computerScore === 5) {
+        return console.log("You Lose! " + computerScore + " to " + computerScore)
+    } else {
+        return playRound()
+    }
+}
+
+game()
