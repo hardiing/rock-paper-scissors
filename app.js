@@ -12,7 +12,7 @@ function capitalize(string) {
 }
 
 function getPlayerChoice() {
-    let playerSelection = prompt("Select rock, paper, or scissors")
+    playerSelection = prompt("Select rock, paper, or scissors")
     return playerSelection
 }
 
@@ -30,7 +30,7 @@ function getComputerChoice() {
 
 function playRound() {
     getPlayerChoice()
-    getComputerChoice()
+    computerSelection = getComputerChoice()
     let playerOption = playerSelection.toLowerCase()
     let computerOption = computerSelection.toLowerCase()
     
@@ -55,9 +55,6 @@ function playRound() {
     } else {
         console.log("Tie! Play again!")
         return playerWin = false
-        // let playerSelection = getPlayerChoice()
-        // let computerSelection = getComputerChoice()
-        // playRound(playerSelection, computerSelection)
     }
 
 }
@@ -66,14 +63,16 @@ function game() {
     let playerScore = 0
     let computerScore = 0
 
-    while(playerScore < 5 || computerScore < 5) {
+    while(playerScore < 5 && computerScore < 5) {
         playRound()
         if(playerWin === true) {
             playerScore++
             playerWin = false
+            console.log("Player: " + playerScore + " // Computer: " + computerScore)
         } else if(computerWin === true) {
             computerScore++
             computerWin = false
+            console.log("Player: " + playerScore + " // Computer: " + computerScore)
         }
     }
 
