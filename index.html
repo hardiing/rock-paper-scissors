@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
     <title>RoShamBo!</title>
 </head>
 <body>
-    
+    <div id="gameBoard">
+        <div class="player">
+            <h1>Player</h1>
+            <!-- <h1 class="playerScore">0</h1> -->
+            <button id="rockBtn">Rock</button>
+            <button id="paperBtn">Paper</button>
+            <button id="scissorsBtn">Scissors</button>
+        </div>
+        <div class="computer">
+            <h1>Computer</h1>
+            <!-- <h1 class="computerScore">0</h1> -->
+            <button class="choiceBtn">Rock</button>
+            <button class="choiceBtn">Paper</button>
+            <button class="choiceBtn">Scissors</button>
+        </div>
+    </div>
 </body>
 </html>

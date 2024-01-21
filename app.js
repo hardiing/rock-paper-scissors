@@ -3,6 +3,23 @@ let computerSelection
 let playerWin = false
 let computerWin = false
 
+let rockChoice = document.getElementById("rockBtn");
+let paperChoice = document.getElementById("paperBtn");
+let scissorsChoice = document.getElementById("scissorsBtn");
+
+rockChoice.addEventListener("click", () => {
+    playerSelection = "rock";
+    playRound();
+});
+paperChoice.addEventListener("click", () => {
+    playerSelection = "paper";
+    playRound();
+});
+scissorsChoice.addEventListener("click", () => {
+    playerSelection = "scissors";
+    playRound();
+});
+
 function capitalize(string) {
     string = string.split("")
     for(let i = 0; i < string.length; i++) {
@@ -12,7 +29,7 @@ function capitalize(string) {
 }
 
 function getPlayerChoice() {
-    playerSelection = prompt("Select rock, paper, or scissors")
+    playerSelection = buttons.textContent;
     return playerSelection
 }
 
@@ -29,13 +46,16 @@ function getComputerChoice() {
 }
 
 function playRound() {
-    getPlayerChoice()
-    computerSelection = getComputerChoice()
-    let playerOption = playerSelection.toLowerCase()
+    // getPlayerChoice()
+    computerSelection = getComputerChoice();
+    let playerOption = playerSelection.toLowerCase();
     let computerOption = computerSelection.toLowerCase()
+    let gameBoard = document.getElementById("gameBoard");
+    let results = document.createElement("div");
     
     if(playerOption === "rock" && computerOption === "scissors") {
-        console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        results.textContent = "You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption)
+        gameBoard.appendChild(results);
         return playerWin = true
     } else if(playerOption === "rock" && computerOption === "paper") {
         console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
@@ -85,4 +105,8 @@ function game() {
     }
 }
 
-game()
+// game()
+
+
+
+

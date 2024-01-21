@@ -1,0 +1,21 @@
+#gameBoard {
+    margin-top: 25%;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    align-items: center;
+    gap: 15px;
+    margin-left: 35%;
+}
+
+.computer {
+    display: flex;
+    flex-direction: column;
+    float: right;
+    align-items: center;
+    gap: 15px;
+    margin-right: 35%;
+}
