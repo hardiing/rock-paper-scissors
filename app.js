@@ -51,17 +51,29 @@ function playRound() {
     let playerOption = playerSelection.toLowerCase();
     let computerOption = computerSelection.toLowerCase()
     let gameBoard = document.getElementById("gameBoard");
-    let results = document.createElement("div");
+    let resultsArea = document.getElementById("resultsArea");
+    let resultsText = document.createElement("h2")
+    // resultsText.textContent = "";
+    let gameScore = document.createElement("h1")
     
     if(playerOption === "rock" && computerOption === "scissors") {
-        results.textContent = "You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption)
-        gameBoard.appendChild(results);
+        if (resultsText.textContent === "") {
+            resultsText.textContent = "You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption);
+            resultsArea.appendChild(resultsText);
+        } else {
+            resultsText.textContent = "You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption);
+        }
         return playerWin = true
     } else if(playerOption === "rock" && computerOption === "paper") {
         console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
         return computerWin = true
     } else if(playerOption === "paper" && computerOption === "rock") {
-        console.log("You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption))
+        if (resultsText.textContent === "") {
+            resultsText.textContent = "You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption);
+            resultsArea.appendChild(resultsText);
+        } else {
+            resultsText.textContent = "You Win! " + capitalize(playerOption) + " beats " + capitalize(computerOption);
+        }
         return playerWin = true
     } else if(playerOption === "paper" && computerOption === "scissors") {
         console.log("You Lose! " + capitalize(computerOption) + " beats " + capitalize(playerOption))
